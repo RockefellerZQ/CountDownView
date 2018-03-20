@@ -292,6 +292,11 @@
     }
 }
 
+- (void)setLabelBorderColor:(UIColor *)labelBorderColor {
+    _hourLabel.layer.borderColor = _minuteLabel.layer.borderColor = _secondLabel.layer.borderColor = labelBorderColor.CGColor;
+    _hourLabel.layer.borderWidth = _minuteLabel.layer.borderWidth = _secondLabel.layer.borderWidth = 0.5;
+}
+
 - (NSTimer *)timer
 {
     if (!_timer)

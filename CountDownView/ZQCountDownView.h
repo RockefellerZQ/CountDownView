@@ -26,6 +26,8 @@
 // 倒计时label的字体
 @property (nonatomic) UIFont *textFont;
 
+@property (nonatomic) UIColor *labelBorderColor;
+
 @property (nonatomic, weak) id <ZQCountDownViewDelegate> delegate;
 
 // 默认为NO，当进入后台一段时间后定时器将会暂停及时，再次
