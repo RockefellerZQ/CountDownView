@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ZQCountDownView"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "倒计时控件"
 
   s.description  = <<-DESC
