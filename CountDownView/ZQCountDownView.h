@@ -28,6 +28,9 @@
 
 @property (nonatomic) UIColor *labelBorderColor;
 
+//  是否圆角 default NO
+@property (nonatomic, assign) BOOL circularCorner;
+
 @property (nonatomic, weak) id <ZQCountDownViewDelegate> delegate;
 
 // 默认为NO，当进入后台一段时间后定时器将会暂停及时，再次

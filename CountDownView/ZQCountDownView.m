@@ -152,6 +152,19 @@
     colonOne = nil;
     colonTwo = nil;
     
+    if (_circularCorner) {
+        if (hourLabelWidth > itemWidth) {
+            hourLabelWidth = itemWidth;
+        }
+        if (itemWidth > itemHeight) {
+            itemWidth = itemHeight;
+        } else {
+            itemHeight = itemWidth;
+        }
+        _hourLabel.layer.cornerRadius = itemWidth/2.0;
+        _minuteLabel.layer.cornerRadius = itemWidth/2.0;
+        _secondLabel.layer.cornerRadius = itemWidth/2.0;
+    }
     _hourLabel.frame = CGRectMake(0, 0, hourLabelWidth, itemHeight);
     _minuteLabel.frame = CGRectMake(CGRectGetMaxX(_hourLabel.frame) + colonWidth, 0, itemWidth, itemHeight);
     _secondLabel.frame = CGRectMake(CGRectGetMaxX(_minuteLabel.frame) + colonWidth, 0, itemWidth, itemHeight);
@@ -167,6 +180,14 @@
     }
 }
 
+- (void)setCircularCorner:(BOOL)circularCorner
+{
+    if (_circularCorner != circularCorner) {
+        _circularCorner = circularCorner;
+        [self adjustSubViewsWithFrame:self.frame];
+    }
+}
+
 #pragma mark init subviews
 - (UILabel *)hourLabel
 {
@@ -178,6 +199,8 @@
         _hourLabel.textColor = _textColor;
         _hourLabel.font = _textFont;
         _hourLabel.layer.cornerRadius = 4;
+        _hourLabel.layer.shouldRasterize = YES;
+        _hourLabel.layer.rasterizationScale = [UIScreen mainScreen].scale;
         _hourLabel.clipsToBounds = YES;
         _hourLabel.text = @"00";
     }
@@ -194,6 +217,8 @@
         _minuteLabel.textColor = _textColor;
         _minuteLabel.font = _textFont;
         _minuteLabel.layer.cornerRadius = 4;
+        _minuteLabel.layer.shouldRasterize = YES;
+        _minuteLabel.layer.rasterizationScale = [UIScreen mainScreen].scale;
         _minuteLabel.clipsToBounds = YES;
         _minuteLabel.text = @"00";
     }
@@ -210,6 +235,8 @@
         _secondLabel.textColor = _textColor;
         _secondLabel.font = _textFont;
         _secondLabel.layer.cornerRadius = 4;
+        _secondLabel.layer.shouldRasterize = YES;
+        _secondLabel.layer.rasterizationScale = [UIScreen mainScreen].scale;
         _secondLabel.clipsToBounds = YES;
         _secondLabel.text = @"00";
     }

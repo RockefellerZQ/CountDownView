@@ -20,6 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _countDownView.circularCorner = YES;
     _countDownView.themeColor = [UIColor orangeColor];
     _countDownView.countDownTimeInterval = 2000;
     _countDownView.recoderTimeIntervalDidInBackground = YES;
