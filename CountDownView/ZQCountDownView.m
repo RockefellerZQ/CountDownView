@@ -132,6 +132,24 @@
         }
     }
     
+    if (_circularCorner) {
+        if (hourLabelWidth > itemWidth) {
+            hourLabelWidth = itemWidth;
+        }
+        if (itemWidth > itemHeight) {
+            hourLabelWidth = itemHeight;
+            itemWidth = itemHeight;
+        } else {
+            itemHeight = itemWidth;
+        }
+        _hourLabel.layer.cornerRadius = itemWidth/2.0;
+        _minuteLabel.layer.cornerRadius = itemWidth/2.0;
+        _secondLabel.layer.cornerRadius = itemWidth/2.0;
+    }
+    _hourLabel.frame = CGRectMake(0, 0, hourLabelWidth, itemHeight);
+    _minuteLabel.frame = CGRectMake(CGRectGetMaxX(_hourLabel.frame) + colonWidth, 0, itemWidth, itemHeight);
+    _secondLabel.frame = CGRectMake(CGRectGetMaxX(_minuteLabel.frame) + colonWidth, 0, itemWidth, itemHeight);
+    
     UILabel *colonOne = [[UILabel alloc] initWithFrame:CGRectMake(hourLabelWidth, 0, colonWidth, itemHeight)];
     colonOne.text = @":";
     colonOne.backgroundColor = [UIColor clearColor];
@@ -151,23 +169,6 @@
     _colonsArray = @[colonOne, colonTwo];
     colonOne = nil;
     colonTwo = nil;
-    
-    if (_circularCorner) {
-        if (hourLabelWidth > itemWidth) {
-            hourLabelWidth = itemWidth;
-        }
-        if (itemWidth > itemHeight) {
-            itemWidth = itemHeight;
-        } else {
-            itemHeight = itemWidth;
-        }
-        _hourLabel.layer.cornerRadius = itemWidth/2.0;
-        _minuteLabel.layer.cornerRadius = itemWidth/2.0;
-        _secondLabel.layer.cornerRadius = itemWidth/2.0;
-    }
-    _hourLabel.frame = CGRectMake(0, 0, hourLabelWidth, itemHeight);
-    _minuteLabel.frame = CGRectMake(CGRectGetMaxX(_hourLabel.frame) + colonWidth, 0, itemWidth, itemHeight);
-    _secondLabel.frame = CGRectMake(CGRectGetMaxX(_minuteLabel.frame) + colonWidth, 0, itemWidth, itemHeight);
 }
 
 - (void)setHourText:(NSString *)hour
